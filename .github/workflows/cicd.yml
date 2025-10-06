@@ -28,7 +28,7 @@ jobs:
       - name: Run tests
         run: php bin/phpunit --testdox
 
-  docker-buil-push:
+  docker-build-push:
     runs-on: ubuntu-latest
     needs: build-and-test
 
@@ -42,7 +42,7 @@ jobs:
             password: ${{secrets.DOCKER_TOKEN}}
       
       - name: Build Docker image
-        run: docker build -t kerfiguetteboutman525/democicd:latest
+        run: docker build -t kerfiguetteboutman525/democicd:latest .
 
       - name: Push Docker image
         run: docker push kerfiguetteboutman525/democicd:latest
